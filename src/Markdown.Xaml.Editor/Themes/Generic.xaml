@@ -1,0 +1,253 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:editor="clr-namespace:Markdown.Xaml.Editor"
+    xmlns:xamlMarkdown="clr-namespace:Markdown.Xaml;assembly=Markdown.Xaml"
+    xmlns:localConverters="clr-namespace:Markdown.Xaml.Editor.Converters">
+
+    <Style
+        TargetType="FlowDocument"
+        x:Key="DocumentStyle">
+        <Setter
+            Property="FontFamily"
+            Value="Segoe UI" />
+        <Setter
+            Property="FontSize"
+            Value="12" />
+        <Setter
+            Property="TextAlignment"
+            Value="Left" />
+    </Style>
+
+    <Style
+        x:Key="H1Style"
+        TargetType="Paragraph">
+        <Setter
+            Property="FontSize"
+            Value="42" />
+        <Setter
+            Property="Foreground"
+            Value="#ff000000" />
+        <Setter
+            Property="FontWeight"
+            Value="Light" />
+    </Style>
+
+    <Style
+        x:Key="H2Style"
+        TargetType="Paragraph">
+        <Setter
+            Property="FontSize"
+            Value="20" />
+        <Setter
+            Property="Foreground"
+            Value="#ff000000" />
+        <Setter
+            Property="FontWeight"
+            Value="Light" />
+    </Style>
+
+    <Style
+        x:Key="H3Style"
+        TargetType="Paragraph">
+        <Setter
+            Property="FontSize"
+            Value="20" />
+        <Setter
+            Property="Foreground"
+            Value="#99000000" />
+        <Setter
+            Property="FontWeight"
+            Value="Light" />
+    </Style>
+
+    <Style
+        x:Key="H4Style"
+        TargetType="Paragraph">
+        <Setter
+            Property="FontSize"
+            Value="14" />
+        <Setter
+            Property="Foreground"
+            Value="#99000000" />
+        <Setter
+            Property="FontWeight"
+            Value="Light" />
+    </Style>
+
+    <Style
+        x:Key="LinkStyle"
+        TargetType="Hyperlink">
+        <Setter
+            Property="TextDecorations"
+            Value="None" />
+    </Style>
+
+    <Style
+        x:Key="ImageStyle"
+        TargetType="Image">
+        <Setter
+            Property="RenderOptions.BitmapScalingMode"
+            Value="NearestNeighbor" />
+        <Style.Triggers>
+            <Trigger
+                Property="Tag"
+                Value="imageright">
+                <Setter
+                    Property="Margin"
+                    Value="20,0,0,0" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style
+        x:Key="SeparatorStyle"
+        TargetType="Line">
+        <Setter
+            Property="X2"
+            Value="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=FlowDocumentScrollViewer}}" />
+        <Setter
+            Property="Stroke"
+            Value="#99000000" />
+        <Setter
+            Property="StrokeThickness"
+            Value="2" />
+    </Style>
+
+    <Style
+        TargetType="{x:Type editor:MarkdownEditor}">
+
+        <Style.Resources>
+            <xamlMarkdown:TextToFlowDocumentConverter
+                x:Key="TextToFlowDocumentConverter" />
+
+            <localConverters:CollapsedOnFalseConverter
+                x:Key="CollapsedOnFalseConverter" />
+            
+            <localConverters:CollapsedOnTrueConverter
+                x:Key="CollapsedOnTrueConverter" />
+
+            <DrawingImage
+                x:Key="EditIcon">
+                <DrawingImage.Drawing>
+                    <GeometryDrawing
+                        Brush="DarkGray"
+                        Geometry="M3.3997434,22.001989L7.9999695,26.764826 7.9999695,22.001989z M16.362266,16.640196L16.129938,16.869006 15.510936,20.33301 18.937945,19.346009 19.062141,19.223697z M5.0069956,12L15.000996,12 15.000996,14 5.0069956,14z M23.762037,9.3524799L17.787971,15.23608 20.487872,17.819603 26.379948,12.016942z M5.0069998,8L16.999958,8 16.999958,10 5.0069998,10z M26.498966,6.6569958L25.186848,7.9492459 27.804781,10.613731 29.152973,9.2859983z M5.0070003,4L16.999958,4 16.999958,6 5.0070003,6z M2.8839929,2C2.6389937,2 2.4119945,2.0930004 2.2429948,2.2620001 2.0859954,2.4189997 1.9999957,2.625 1.9999955,2.842L2.033838,20.001986 9.999958,20.001986 9.999958,28 19.113941,28C19.60094,28,19.996939,27.623,19.996939,27.16L19.996939,21.110278 19.979948,21.12701 12.976929,23.146012 14.273932,15.890005 19.996939,10.254055 19.996939,2.8400002C19.996939,2.3769999,19.60094,2,19.113941,2z M2.8839929,0L19.113941,0C20.703936,0,21.996931,1.2740002,21.996931,2.8400002L21.996931,8.2844851 26.502966,3.8469934 31.999981,9.2899985 21.996931,19.140739 21.996931,27.16C21.996931,28.726,20.703936,30,19.113941,30L8.3439753,30 0.037002087,21.399 2.3841858E-06,2.8459997C-0.00099802017,2.0939999 0.29300117,1.3850002 0.82699966,0.84899998 1.3739977,0.30200005 2.1039953,0 2.8839929,0z" />
+                </DrawingImage.Drawing>
+            </DrawingImage>
+        </Style.Resources>
+
+        <Setter
+            Property="Template">
+            <Setter.Value>
+                <ControlTemplate
+                    TargetType="{x:Type editor:MarkdownEditor}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition
+                                Width="*" />
+                            <ColumnDefinition
+                                Width="20" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition
+                                Height="20" />
+                            <RowDefinition
+                                Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <FlowDocumentScrollViewer
+                            Name="PART_FlowDocumentScrollViewer"
+                            Grid.Row="0"
+                            Grid.RowSpan="2"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Visibility="{TemplateBinding IsInEditMode, Converter={StaticResource CollapsedOnTrueConverter}}"
+                            VerticalScrollBarVisibility="Auto" />
+
+                        <TextBox
+                            Grid.Row="0"
+                            Grid.RowSpan="2"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            AcceptsReturn="True"
+                            AcceptsTab="True"
+                            Text="{Binding Text, Mode=TwoWay}"
+                            Visibility="{TemplateBinding IsInEditMode, Converter={StaticResource CollapsedOnFalseConverter}}"/>
+
+                        <Image
+                            x:Name="PART_EditIcon"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Source="{StaticResource EditIcon}"
+                            Opacity="0">
+                            <Image.Triggers>
+                                <EventTrigger
+                                    RoutedEvent="editor:MarkdownEditor.MouseEnter">
+                                    <EventTrigger.Actions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation
+                                                    Duration="0:0:0.300"
+                                                    Storyboard.TargetProperty="Opacity"
+                                                    From="0"
+                                                    To="1" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger.Actions>
+                                </EventTrigger>
+                                <EventTrigger
+                                    RoutedEvent="editor:MarkdownEditor.MouseLeave">
+                                    <EventTrigger.Actions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation
+                                                    Duration="0:0:0.800"
+                                                    Storyboard.TargetProperty="Opacity"
+                                                    From="1"
+                                                    To="0" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger.Actions>
+                                </EventTrigger>
+                            </Image.Triggers>
+                        </Image>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Setter
+            Property="DocumentStyle"
+            Value="{StaticResource DocumentStyle}" />
+        
+        <Setter
+            Property="Heading1Style"
+            Value="{StaticResource H1Style}" />
+        
+        <Setter
+            Property="Heading2Style"
+            Value="{StaticResource H2Style}" />
+        
+        <Setter
+            Property="Heading3Style"
+            Value="{StaticResource H3Style}" />
+        
+        <Setter
+            Property="Heading4Style"
+            Value="{StaticResource H4Style}" />
+        
+        <Setter
+            Property="LinkStyle"
+            Value="{StaticResource LinkStyle}" />
+        
+        <Setter
+            Property="ImageStyle"
+            Value="{StaticResource ImageStyle}" />
+
+        <Setter
+            Property="SeparatorStyle"
+            Value="{StaticResource SeparatorStyle}" />
+    </Style>
+</ResourceDictionary>

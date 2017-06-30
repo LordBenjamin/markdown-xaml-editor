@@ -1,0 +1,13 @@
+﻿<Window
+    x:Class="MarkdownEditorDemo.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:editor="clr-namespace:Markdown.Xaml.Editor;assembly=Markdown.Xaml.Editor"
+    Title="Demo">
+    
+    <Grid>
+        <editor:MarkdownEditor
+            LinkClicked="MarkdownEditor_LinkClicked"
+            Text="{Binding Text}"/>
+    </Grid>
+</Window>
