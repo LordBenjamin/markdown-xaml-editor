@@ -61,7 +61,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\packages\Markdown.XAML\src\Markdown.Xaml\Markdown.Xaml.csproj">
+    <ProjectReference Include="..\..\ThirdParty\Markdown.XAML\src\Markdown.Xaml\Markdown.Xaml.csproj">
       <Project>{34186c3b-c308-4cae-b462-db7b5f5e378c}</Project>
       <Name>Markdown.Xaml</Name>
     </ProjectReference>
